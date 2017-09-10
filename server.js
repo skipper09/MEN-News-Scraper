@@ -78,14 +78,14 @@ app.get("/saved", function (req, res) {
 });
 
 app.get("/saved/:id", function (req, res) {
-    Saved.findOne({ "_id": req.params.id }
+    Saved.findOne({ "_id": req.params.id })
         .populate("comment").exec(function (err, doc) {
             if (err) {
                 console.log(error);
             } else {
                 res.json(doc);
             }
-        }));
+        });
 });
 
 app.post("/saved/:id", function (req, res) {
@@ -102,6 +102,7 @@ app.post("/saved/:id", function (req, res) {
                     }
                     else {
                         // Or send the document to the browser
+                        console.log(doc);
                         res.send(doc);
                     }
                 })
