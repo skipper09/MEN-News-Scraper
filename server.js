@@ -95,7 +95,8 @@ app.post("/saved/:id", function (req, res) {
         if (error) {
             console.log(error)
         } else {
-            Saved.findOneAndUpdate({ "_id:": req.params.id }, { "comment": doc._id })
+            console.log("Doc ID: " + doc._id);
+            Saved.findOneAndUpdate({ "_id:": req.params.id }, { "Comments": doc._id })
                 .exec(function (err, doc) {
                     if (err) {
                         console.log(err);
@@ -103,6 +104,7 @@ app.post("/saved/:id", function (req, res) {
                     else {
                         // Or send the document to the browser
                         console.log(doc);
+                        console.log("We're saving the comment within the article!")
                         res.send(doc);
                     }
                 })

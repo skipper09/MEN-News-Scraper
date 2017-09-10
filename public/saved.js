@@ -37,12 +37,9 @@ $(document).on("click", ".comment", function () {
         .done(function (data) {
             console.log(data);
             $("#modalTitle").append("<h3>Comments for " + JSON.stringify(data.title) + "</h3>");
-            if (data.comment) {
-                comments = data.comment;
-                comments.forEach(function (comments) {
-                    $("#modalComments").append("<p>" + comments.body + "</p>")
-                })
-                // $("#modalComments").append(JSON.stringify(data.comment));
+            if (data.Comments) {
+                $("#modalComments").append("There is a comment!");
+                $("#modalComments").append(JSON.stringify(data.Comments));
             } else {
                 $("#modalComments").append("No comments yet");
             }
@@ -67,6 +64,8 @@ $(document).on("click", "#leaveComment", function () {
             // Log the response
             console.log(data);
         });
+
+    $("#myModal").css("display", "none");
 })
 
 $(document).on("click", ".close", function () {

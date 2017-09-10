@@ -8,6 +8,6 @@ var CommentsSchema = new Schema({
     }
 });
 
-var Comments = mongoose.model("Comment", CommentsSchema);
+var Comments = mongoose.model("Comments", CommentsSchema);
 
 module.exports = Comments;
