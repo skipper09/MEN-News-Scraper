@@ -101,32 +101,16 @@ app.post("/save/:id", function (req, res) {
 });
 
 app.delete("/clear", function (req, res) {
-    // Results.find({}, function(req,res) {
-    //     if (error) {
-    //         res.send(error);
-    //       }
-    //       // Or send the doc to the browser
-    //       else {
-    //           res.redirect("/")
-    //       }
-    // });
-    console.log("fuck ya");
-
-    // Results.find({}, function (error, person){
-    //     console.log("This object will get deleted " + person);
-    //     person.remove();
-
-    // });
-
-    // Results.remove({search: criteria}, function() {
-    //     // removed.
-    // });
-
     Results.remove({}, function(err){
         if(err) throw err;
     });
+});
 
-    
+app.delete("/unsave/:id", function(req, res) {
+    Saved.remove({_id:req.params.id}, function(err) {
+        if(err) throw err;
+        // removed.
+    });
 });
 
 // END ROUTES

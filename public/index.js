@@ -22,9 +22,7 @@ $(document).on("click", "#clear-scraper", function () {
 });
 
 $(document).on("click", ".save-result", function () {
-
     var thisId = $(this).attr("data-id");
-
     $.ajax({
         method: "POST",
         url: "/save/" + thisId,
