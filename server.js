@@ -52,7 +52,7 @@ app.get("/scrape", function(req, res) {
             })
         })
     });
-    res.send("Scrape Complete");
+    res.redirect("/");
 })
 
 app.get("/results", function(req, res) {
@@ -67,18 +67,70 @@ app.get("/results", function(req, res) {
     });
 });
 
+app.get("/saved", function(req, res) {
+    
+        Saved.find({}, function(error, doc) {
+            
+            if (error) {
+                console.log(error)
+            } else {
+                res.json(doc)
+            }
+        });
+    });
 
+app.post("/save/:id", function (req, res) {
+    Results.findOne({ "_id": req.params.id}, function(req, res){
+        console.log(res +"kghgjhggfjgfhh");
 
+        var result = {};
+        result.title = res.title;
+        result.link = res.link; 
 
+        var saveArticle = new Saved(result);
 
+        saveArticle.save(function(err, doc) {
+            if (err) {
+                console.log(err)
+            } else {
+                console.log(doc + "lkjkjhj")
+                // res.send("Saved article to database")
+            }
+        });    
+    })
+});
 
-// END ROUTES HERE
+app.delete("/clear", function (req, res) {
+    // Results.find({}, function(req,res) {
+    //     if (error) {
+    //         res.send(error);
+    //       }
+    //       // Or send the doc to the browser
+    //       else {
+    //           res.redirect("/")
+    //       }
+    // });
+    console.log("fuck ya");
 
+    // Results.find({}, function (error, person){
+    //     console.log("This object will get deleted " + person);
+    //     person.remove();
 
+    // });
+
+    // Results.remove({search: criteria}, function() {
+    //     // removed.
+    // });
+
+    Results.remove({}, function(err){
+        if(err) throw err;
+    });
+
+    
+});
+
+// END ROUTES
 
 app.listen(3000, function() {
     console.log("App running on port 3000")
 });
-
-
-
