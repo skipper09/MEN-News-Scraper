@@ -39,7 +39,7 @@ $(document).on("click", ".comment", function () {
             $("#modalTitle").append("<h3>Comments for " + JSON.stringify(data.title) + "</h3>");
             if (data.Comments.length > 0) {
                 for (var i = 0; i < data.Comments.length; i++) {
-                    $("#modalComments").append("<p>" + JSON.stringify(data.Comments[i].body) + "<p>")
+                    $("#modalComments").append("<p>" + JSON.stringify(data.Comments[i].body) + "<span><button id='deleteComment' data-id='" + data.Comments[i]._id + "' class='delete-button'>Delete</button></span></p>")
                 }
             } else {
                 $("#modalComments").append("<p>No comments yet</p>");
@@ -67,6 +67,27 @@ $(document).on("click", "#leaveComment", function () {
         });
 
     $("#myModal").css("display", "none");
+})
+
+$(document).on("click", "#deleteComment", function() {
+    var thisId = $(this).attr("data-id");
+    console.log(thisId);
+    $.ajax({
+        type: 'DELETE',
+        url: '/deletecomment/' + thisId,
+        success: function (response) {
+            if (response == 'error') {
+                console.log('Err!');
+            }
+            else {
+                console.log('deleted!');
+                location.reload();
+            }
+        }
+    });
+
+    $("#myModal").css("display", "none");
+
 })
 
 $(document).on("click", ".close", function () {

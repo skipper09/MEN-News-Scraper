@@ -46,3 +46,7 @@
     text-decoration: none;
     cursor: pointer;
 }
+
+.delete-button {
+    float:right;
+}

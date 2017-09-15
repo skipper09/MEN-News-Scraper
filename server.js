@@ -97,44 +97,21 @@ app.post("/saved/:id", function (req, res) {
         } else {
             console.log("Doc ID: " + doc._id);
 
-            // Saved.findByIdAndUpdate({ "_id:": req.params.id }, { $set: { "Comments": doc._id } }, { new: true }, function (err, doc) {
-            //     if (err) return handleError(err);
-            //     res.send(doc);
-            // });
-
             Saved.findByIdAndUpdate(req.params.id, { $push: { "Comments": doc._id } }, { new: true }, function (error, doc) {
-                // Send any errors to the browser
                 if (error) {
                     res.send(error);
                 }
-                // Or send the doc to the browser
                 else {
                     res.send(doc);
                 }
             });
-
-
-
-            // Saved.findOneAndUpdate({ "_id:": req.params.id }, { "Comments": doc._id })
-            //     .exec(function (err, doc) {
-            //         if (err) {
-            //             console.log(err);
-            //         }
-            //         else {
-            //             // Or send the document to the browser
-            //             console.log(doc);
-            //             console.log("We're saving the comment within the article!")
-            //             res.send(doc);
-            //         }
-            //     })
         }
-
     })
 })
 
 app.post("/save/:id", function (req, res) {
     Results.findOne({ "_id": req.params.id }, function (req, res) {
-        console.log(res + "kghgjhggfjgfhh");
+        console.log(res);
 
         var result = {};
         result.title = res.title;
@@ -146,8 +123,7 @@ app.post("/save/:id", function (req, res) {
             if (err) {
                 console.log(err)
             } else {
-                console.log(doc + "lkjkjhj")
-                // res.send("Saved article to database")
+                console.log(doc)
             }
         });
     })
@@ -165,6 +141,12 @@ app.delete("/unsave/:id", function (req, res) {
         // removed.
     });
 });
+
+app.delete("/deletecomment/:id", function (req, res) {
+    Comments.remove({"_id": req.params.id}, function(err) {
+        if (err) throw err;
+    })
+})
 
 // END ROUTES
 
