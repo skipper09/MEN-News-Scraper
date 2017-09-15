@@ -44,8 +44,8 @@ $(document).on("click", ".comment", function () {
             } else {
                 $("#modalComments").append("<p>No comments yet</p>");
             }
-            $("#modalInput").append("<textarea id='bodyinput' name='body'></textarea>");
-            $("#modalInput").append("<button data-id='" + data._id + "' id='leaveComment'>Add Comment</button>")
+            $("#modalInput").append("<textarea id='bodyinput' name='body' rows='10' cols='60'></textarea>");
+            $("#modalInput").append("<br><button data-id='" + data._id + "' id='leaveComment'>Add Comment</button>")
         });
 
     $("#myModal").css("display", "block");
