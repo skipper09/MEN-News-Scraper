@@ -37,11 +37,12 @@ $(document).on("click", ".comment", function () {
         .done(function (data) {
             console.log(data);
             $("#modalTitle").append("<h3>Comments for " + JSON.stringify(data.title) + "</h3>");
-            if (data.Comments) {
-                $("#modalComments").append("There is a comment!");
-                $("#modalComments").append(JSON.stringify(data.Comments));
+            if (data.Comments.length > 0) {
+                for (var i = 0; i < data.Comments.length; i++) {
+                    $("#modalComments").append("<p>" + JSON.stringify(data.Comments[i].body) + "<p>")
+                }
             } else {
-                $("#modalComments").append("No comments yet");
+                $("#modalComments").append("<p>No comments yet</p>");
             }
             $("#modalInput").append("<textarea id='bodyinput' name='body'></textarea>");
             $("#modalInput").append("<button data-id='" + data._id + "' id='leaveComment'>Add Comment</button>")

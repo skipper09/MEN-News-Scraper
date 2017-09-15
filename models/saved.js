@@ -12,10 +12,10 @@ var SavedSchema = new Schema({
         type: String,
         required: true
     },
-    Comments: {
+    Comments: [{
         type: Schema.Types.ObjectId,
         ref: "Comments"
-    }
+    }]
 });
 
 var Saved = mongoose.model("Saved", SavedSchema);

@@ -79,7 +79,7 @@ app.get("/saved", function (req, res) {
 
 app.get("/saved/:id", function (req, res) {
     Saved.findOne({ "_id": req.params.id })
-        .populate("comment").exec(function (err, doc) {
+        .populate("Comments").exec(function (err, doc) {
             if (err) {
                 console.log(error);
             } else {
@@ -96,18 +96,37 @@ app.post("/saved/:id", function (req, res) {
             console.log(error)
         } else {
             console.log("Doc ID: " + doc._id);
-            Saved.findOneAndUpdate({ "_id:": req.params.id }, { "Comments": doc._id })
-                .exec(function (err, doc) {
-                    if (err) {
-                        console.log(err);
-                    }
-                    else {
-                        // Or send the document to the browser
-                        console.log(doc);
-                        console.log("We're saving the comment within the article!")
-                        res.send(doc);
-                    }
-                })
+
+            // Saved.findByIdAndUpdate({ "_id:": req.params.id }, { $set: { "Comments": doc._id } }, { new: true }, function (err, doc) {
+            //     if (err) return handleError(err);
+            //     res.send(doc);
+            // });
+
+            Saved.findByIdAndUpdate(req.params.id, { $push: { "Comments": doc._id } }, { new: true }, function (error, doc) {
+                // Send any errors to the browser
+                if (error) {
+                    res.send(error);
+                }
+                // Or send the doc to the browser
+                else {
+                    res.send(doc);
+                }
+            });
+
+
+
+            // Saved.findOneAndUpdate({ "_id:": req.params.id }, { "Comments": doc._id })
+            //     .exec(function (err, doc) {
+            //         if (err) {
+            //             console.log(err);
+            //         }
+            //         else {
+            //             // Or send the document to the browser
+            //             console.log(doc);
+            //             console.log("We're saving the comment within the article!")
+            //             res.send(doc);
+            //         }
+            //     })
         }
 
     })
