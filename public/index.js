@@ -11,22 +11,6 @@ $.getJSON("/results", function (data) {
     }
 });
 
-// $(document).on("click", "#clear-scraper", function () {
-//     $.ajax({
-//         type: 'DELETE',
-//         url: '/clear',
-//         success: function (response) {
-//             if (response == 'error') {
-//                 console.log('Err!');
-//             }
-//             else {
-//                 alert('Success');
-//                 location.reload();
-//             }
-//         }
-//     });
-// });
-
 $(document).on("click", ".save-result", function () {
     var thisId = $(this).attr("data-id");
     $.ajax({
@@ -38,7 +22,7 @@ $(document).on("click", ".save-result", function () {
     $("#myModal").css("display", "block");
 })
 
-$(document).on("click", ".close", function () {
+$(document).on("click", ".close-modal", function () {
     $("#myModal").css("display", "none");
 })
 

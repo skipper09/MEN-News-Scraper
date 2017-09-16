@@ -28,10 +28,8 @@ $(document).on("click", ".unsave", function () {
         }
     });
 
-    $("#modalTitle").append("<h3>Article removed</h3>");
+    $("#modalTitle").append("<h3 class='m-3'>Article removed</h3>");
     $("#myModal").css("display", "block");
-    // alert("Article removed");
-    // location.reload();
 
 });
 
@@ -48,10 +46,10 @@ $(document).on("click", ".comment", function () {
     })
         .done(function (data) {
             console.log(data);
-            $("#modalTitle").append("<h3>Comments for " + JSON.stringify(data.title) + "</h3>");
+            $("#modalTitle").append("<h3 class='mt-2'>Comments for " + JSON.stringify(data.title) + "</h3>");
             if (data.Comments.length > 0) {
                 for (var i = 0; i < data.Comments.length; i++) {
-                    $("#modalComments").append("<p>" + JSON.stringify(data.Comments[i].body) + "<span><button id='deleteComment' data-id='" + data.Comments[i]._id + "' class='delete-button btn btn-sm rounded-0'>Delete</button></span></p>")
+                    $("#modalComments").append("<p class='m-4'>" + JSON.stringify(data.Comments[i].body) + "<span><button id='deleteComment' data-id='" + data.Comments[i]._id + "' class='delete-button btn btn-sm rounded-0'>Delete</button></span></p>")
                 }
             } else {
                 $("#modalComments").append("<p>No comments yet</p>");
@@ -102,7 +100,7 @@ $(document).on("click", "#deleteComment", function () {
 
 })
 
-$(document).on("click", ".close", function () {
+$(document).on("click", ".close-modal", function () {
     $("#myModal").css("display", "none");
 })
 

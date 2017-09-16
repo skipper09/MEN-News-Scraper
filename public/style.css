@@ -1,6 +1,6 @@
 /* The Modal (background) */
 
-.modal {
+.modal-custom {
     display: none;
     /* Hidden by default */
     position: fixed;
@@ -22,7 +22,7 @@
 }
 /* Modal Content/Box */
 
-.modal-content {
+.modal-content-custom {
     background-color: #fefefe;
     margin: 15% auto;
     /* 15% from the top and centered */
@@ -35,15 +35,15 @@
 
 /* The Close Button */
 
-.close {
+.close-modal {
     color: #aaa;
     float: right!important;
     font-size: 28px;
     font-weight: bold;
 }
 
-.close:hover,
-.close:focus {
+.close-modal:hover,
+.close-modal:focus {
     color: black;
     text-decoration: none;
     cursor: pointer;
