@@ -19,7 +19,13 @@ app.use(bodyParser.urlencoded({
 
 app.use(express.static("public"));
 
-mongoose.connect("mongodb://localhost/MENnewsScraper");
+if (process.env.MONGODB_URI) {
+    mongoose.connect(process.env.MONGODB_URI)
+} else {
+    mongoose.connect("mongodb://localhost/MENnewsScraper");
+}
+
+
 var db = mongoose.connection
 
 db.on("error", function (error) {
