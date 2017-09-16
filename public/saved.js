@@ -1,7 +1,7 @@
 $.getJSON("/saved", function (data) {
     if (data.length > 0) {
         for (var i = 0; i < data.length; i++) {
-            $("#saved").append("<div class='article-div mx-auto'><p>" + data[i].title + "</p><a href='" + data[i].link + "'>" + data[i].link + "</p></a><span class='float-right clearfix mr-4'><button data-id='" + data[i]._id + "' class='btn btn-sm comment rounded-0'>View/Leave Comments</button> <button data-id='" + data[i]._id + "' class='unsave btn btn-sm rounded-0'>Unsave</button></div></span>")
+            $("#saved").append("<div class='article-div mx-auto shadow'><p>" + data[i].title + "</p><a href='" + data[i].link + "'>" + data[i].link + "</p></a><span class='float-right clearfix mr-4'><button data-id='" + data[i]._id + "' class='btn btn-sm comment rounded-0'>View/Leave Comments</button> <button data-id='" + data[i]._id + "' class='unsave btn btn-sm rounded-0'>Unsave</button></div></span>")
         }
     } else {
         $("#saved").append("<div class='article-div mx-auto'><p>No saved articles yet</p></div>");
@@ -9,6 +9,10 @@ $.getJSON("/saved", function (data) {
 });
 
 $(document).on("click", ".unsave", function () {
+    $("#modalTitle").empty();
+    $("#modalComments").empty();
+    $("#modalInput").empty();
+
     var thisId = $(this).attr("data-id");
     $.ajax({
         type: 'DELETE',
@@ -23,8 +27,11 @@ $(document).on("click", ".unsave", function () {
             }
         }
     });
-    alert("Article removed");
-    location.reload();
+
+    $("#modalTitle").append("<h3>Article removed</h3>");
+    $("#myModal").css("display", "block");
+    // alert("Article removed");
+    // location.reload();
 
 });
 

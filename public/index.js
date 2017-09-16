@@ -3,7 +3,7 @@ $.getJSON("/results", function (data) {
     if (data.length > 0) {
         $("#results").append("<div class='article-header mx-auto'><h3>Scraped Articles</h3></div>");
         for (var i = 0; i < data.length; i++) {
-            $("#results").append("<div class='article-div mx-auto'><p>" + data[i].title + "</p><a href='" + data[i].link + "'>" + data[i].link + "</p></a><button data-id='" + data[i]._id + "' class='btn btn-sm save-result index-button float-right clearfix mr-4 rounded-0'>Save Article</button></div>")
+            $("#results").append("<div class='article-div mx-auto shadow'><p>" + data[i].title + "</p><a href='" + data[i].link + "'>" + data[i].link + "</p></a><button data-id='" + data[i]._id + "' class='btn btn-sm save-result index-button float-right clearfix mr-4 rounded-0'>Save Article</button></div>")
             // $("#results").append("<button class='index-button' data-id='" + data[i]._id + "' class='save-result'>Save Article</button></div>")
         }
     } else {
@@ -35,7 +35,16 @@ $(document).on("click", ".save-result", function () {
     }).done(function (data) {
         console.log(data);
     });
-
-    alert("Article saved");
+    $("#myModal").css("display", "block");
 })
+
+$(document).on("click", ".close", function () {
+    $("#myModal").css("display", "none");
+})
+
+window.onclick = function (event) {
+    if (event.target == $("#myModal")) {
+        $("#myModal").style.display = "none";
+    }
+}
 

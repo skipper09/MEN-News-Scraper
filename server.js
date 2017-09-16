@@ -19,11 +19,7 @@ app.use(bodyParser.urlencoded({
 
 app.use(express.static("public"));
 
-if ("mongodb://heroku_3xp418n8:3m83qd5e7hsf7drf26ga9l01u6@ds129374.mlab.com:29374/heroku_3xp418n8") {
-    mongoose.connect("mongodb://heroku_3xp418n8:3m83qd5e7hsf7drf26ga9l01u6@ds129374.mlab.com:29374/heroku_3xp418n8");
-} else {
-    mongoose.connect("mongodb://localhost/MENnewsScraper");
-}
+mongoose.connect("mongodb://heroku_3xp418n8:3m83qd5e7hsf7drf26ga9l01u6@ds129374.mlab.com:29374/heroku_3xp418n8");
 
 var db = mongoose.connection
 
@@ -149,7 +145,7 @@ app.delete("/unsave/:id", function (req, res) {
 });
 
 app.delete("/deletecomment/:id", function (req, res) {
-    Comments.remove({"_id": req.params.id}, function(err) {
+    Comments.remove({ "_id": req.params.id }, function (err) {
         if (err) throw err;
     })
 })
