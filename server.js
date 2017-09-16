@@ -19,11 +19,11 @@ app.use(bodyParser.urlencoded({
 
 app.use(express.static("public"));
 
-// if ("mongodb://heroku_3xp418n8:3m83qd5e7hsf7drf26ga9l01u6@ds129374.mlab.com:29374/heroku_3xp418n8") {
+if ("mongodb://heroku_3xp418n8:3m83qd5e7hsf7drf26ga9l01u6@ds129374.mlab.com:29374/heroku_3xp418n8") {
     mongoose.connect("mongodb://heroku_3xp418n8:3m83qd5e7hsf7drf26ga9l01u6@ds129374.mlab.com:29374/heroku_3xp418n8");
-// } else {
-    // mongoose.connect("mongodb://localhost/MENnewsScraper");
-// }
+} else {
+    mongoose.connect("mongodb://localhost/MENnewsScraper");
+}
 
 var db = mongoose.connection
 
