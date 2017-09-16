@@ -52,7 +52,7 @@ $(document).on("click", ".comment", function () {
                     $("#modalComments").append("<p class='m-4'>" + JSON.stringify(data.Comments[i].body) + "<span><button id='deleteComment' data-id='" + data.Comments[i]._id + "' class='delete-button btn btn-sm rounded-0'>Delete</button></span></p>")
                 }
             } else {
-                $("#modalComments").append("<p>No comments yet</p>");
+                $("#modalComments").append("<p class='m-4'>No comments yet</p>");
             }
             $("#modalInput").append("<textarea id='bodyinput' name='body' rows='10' cols='60'></textarea>");
             $("#modalInput").append("<br><button data-id='" + data._id + "' id='leaveComment' class='btn-sm btn rounded-0'>Add Comment</button>")
