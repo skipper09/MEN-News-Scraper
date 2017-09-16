@@ -21,9 +21,11 @@
             aria-expanded="false" aria-label="Toggle navigation">
                           <span class="navbar-toggler-icon"></span>
                         </button>
-        <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+        <div class="collapse navbar-collapse justify-content-end" id="navbarNavAltMarkup">
             <div class="navbar-nav">
                 <a class="nav-item nav-link" href="/">Home <span class="sr-only">(current)</span></a>
+                <a class="nav-item nav-link" href="/scrape">Scrape Articles</a>
+                <a class="nav-item nav-link" id="clear-scraper13123" href="/clear">Clear Scraped Articles</a>
                 <a class="nav-item nav-link active" href="#">Saved Articles</a>
             </div>
         </div>
@@ -34,15 +36,15 @@
                 <p class="lead text-center"></p>
             </div>
         </div>
-    <div class="article-header m-3 p-1 mx-auto">
+    <div class="article-header mx-auto">
         <h3>Saved Articles</h3>
     </div>
     <div id="saved"></div>
     <div id="myModal" class="modal">
         <div class="modal-content">
-            <span class="close">&times;</span>
+            <span class="close float-right clearfix">&times;</span>
             <div id="modalTitle"></div>
-            <div id="modalComments">ljkhkbbh</div>
+            <div id="modalComments"></div>
             <div id="modalInput"></div>
         </div>
     </div>
