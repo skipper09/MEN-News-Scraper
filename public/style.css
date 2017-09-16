@@ -85,3 +85,11 @@
     box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.2);
 }
 
+.color-orangered {
+    color: #ff4500;
+}
+
+.button-right {
+    float: right;
+}
+

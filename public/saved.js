@@ -1,7 +1,7 @@
 $.getJSON("/saved", function (data) {
     if (data.length > 0) {
         for (var i = 0; i < data.length; i++) {
-            $("#saved").append("<div class='article-div mx-auto shadow'><p>" + data[i].title + "</p><a href='" + data[i].link + "'>" + data[i].link + "</p></a><span class='float-right clearfix mr-4'><button data-id='" + data[i]._id + "' class='btn btn-sm comment rounded-0'>View/Leave Comments</button> <button data-id='" + data[i]._id + "' class='unsave btn btn-sm rounded-0'>Unsave</button></div></span>")
+            $("#saved").append("<div class='article-div mx-auto shadow clearfix'><p>" + data[i].title + "</p><a href='" + data[i].link + "'>" + data[i].link + "</p></a><div class='button-right mr-4'><button data-id='" + data[i]._id + "' class='btn btn-defautl btn-sm comment rounded-0'>View/Leave Comments</button> <button data-id='" + data[i]._id + "' class='unsave btn btn-defautl btn-sm rounded-0'>Unsave</button></div></div>")
         }
     } else {
         $("#saved").append("<div class='article-div mx-auto'><p>No saved articles yet</p></div>");
