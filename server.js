@@ -129,10 +129,11 @@ app.post("/save/:id", function (req, res) {
     })
 });
 
-app.delete("/clear", function (req, res) {
+app.get("/clear", function (req, res) {
     Results.remove({}, function (err) {
         if (err) throw err;
     });
+    res.redirect("/");
 });
 
 app.delete("/unsave/:id", function (req, res) {

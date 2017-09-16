@@ -1,8 +1,8 @@
 $.getJSON("/saved", function (data) {
     for (var i = 0; i < data.length; i++) {
-        $("#saved").append("<p>" + data[i].title + "<br />" + data[i].link + "</p>")
-        $("#saved").append("<button data-id='" + data[i]._id + "' class='unsave'>Unsave</button>")
-        $("#saved").append("<button data-id='" + data[i]._id + "' class='comment'>View/Leave Comments</button>")
+        $("#saved").append("<div class='article-div mx-auto'><p>" + data[i].title + "</p><a href='" + data[i].link + "'>" + data[i].link + "</p></a><button data-id='" + data[i]._id + "' class='unsave'>Unsave</button><button data-id='" + data[i]._id + "' class='comment'>View/Leave Comments</button></div>")
+        // $("#saved").append("<button data-id='" + data[i]._id + "' class='unsave'>Unsave</button>")
+        // $("#saved").append("<button data-id='" + data[i]._id + "' class='comment'>View/Leave Comments</button></div>")
     }
 });
 
